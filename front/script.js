@@ -1,4 +1,3 @@
-// script.js
 const form = document.getElementById('chat-form');
 const messageInput = document.getElementById('message-input');
 const chat = document.getElementById('chat');
@@ -52,12 +51,9 @@ function appendMessage(sender, text) {
   container.appendChild(avatar);
   container.appendChild(message);
 
-  document.getElementById('chat').appendChild(container);
-  document.getElementById('chat').scrollTop = document.getElementById('chat').scrollHeight;
+  chat.appendChild(container);
+  chat.scrollTop = chat.scrollHeight;
 }
-
-
-
 
 document.addEventListener("DOMContentLoaded", () => {
   const currentPage = window.location.pathname;
@@ -72,12 +68,16 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function loadUnanswered() {
+  const loading = document.getElementById('loading-unanswered');
+  const list = document.getElementById('unanswered-list');
+
   try {
+    loading.style.display = 'block';
+    list.innerHTML = '';
+
     const response = await fetch('https://challenge-furia.onrender.com/unanswered');
     const data = await response.json();
 
-    const list = document.getElementById('unanswered-list');
-    list.innerHTML = ''; // Limpar antes
     data.forEach(item => {
       const li = document.createElement('li');
       li.textContent = item.text;
@@ -85,15 +85,20 @@ async function loadUnanswered() {
     });
   } catch (error) {
     console.error('Erro ao carregar perguntas não respondidas', error);
+  } finally {
+    loading.style.display = 'none';
   }
 }
 
 async function loadMetrics() {
+  const loading = document.getElementById('loading-metrics');
+  const ctx = document.getElementById('metricsChart').getContext('2d');
+
   try {
+    loading.style.display = 'block';
+
     const response = await fetch('https://challenge-furia.onrender.com/metrics');
     const data = await response.json();
-
-    const ctx = document.getElementById('metricsChart').getContext('2d');
 
     const labels = data.map(q => q.name_question);
     const dia = data.map(q => q.X_DIA);
@@ -138,5 +143,7 @@ async function loadMetrics() {
     });
   } catch (error) {
     console.error('Erro ao carregar métricas', error);
+  } finally {
+    loading.style.display = 'none';
   }
 }

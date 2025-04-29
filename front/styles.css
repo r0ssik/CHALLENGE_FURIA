@@ -238,3 +238,11 @@ button:hover {
   text-align: left;
   text-transform: uppercase;
 }
+
+#loading-metrics,
+#loading-unanswered {
+  font-weight: bold;
+  text-align: center;
+  margin: 20px;
+  color: #fff;
+}
