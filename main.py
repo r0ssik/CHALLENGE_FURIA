@@ -154,7 +154,7 @@ def get_team_info():
 
         logging.info("Informações do time obtidas com sucesso.")
         update_question_metrics("TEAM_INFO")
-        return f"O time {name}, foi criado na região {location}, e atualmente conta com o número de players {quantidade_de_player}."
+        return f"O time {name}, foi criado na região {location}, e atualmente conta com o número de {quantidade_de_player} players."
     
     except Exception as e:
         logging.error(f"Erro ao obter informações do time: {e}")
