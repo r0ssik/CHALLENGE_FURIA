@@ -42,14 +42,18 @@ function appendMessage(sender, text) {
   const isUser = sender === 'Você';
   container.className = 'message-container ' + (isUser ? 'user-container' : 'bot-container');
   message.className = isUser ? 'user-message' : 'bot-message';
-
   message.innerText = text;
 
-  avatar.src = isUser ? 'user-avatar.png' : 'image.png'; 
+  avatar.src = isUser ? 'user-avatar.png' : 'image.png';
   avatar.className = 'avatar';
 
-  container.appendChild(avatar);
-  container.appendChild(message);
+  if (isUser) {
+    container.appendChild(message);
+    container.appendChild(avatar);
+  } else {
+    container.appendChild(avatar);
+    container.appendChild(message);
+  }
 
   chat.appendChild(container);
   chat.scrollTop = chat.scrollHeight;
@@ -63,12 +67,9 @@ document.addEventListener("DOMContentLoaded", () => {
   } else if (currentPage.includes("metrics.html")) {
     loadMetrics();
   } else {
-    
     appendMessage('FURIOSO', 'Oii, eu sou o FURIOSO, ajudante da FURIA, com o que posso ajudar? pergunte sobre o time, os jogadores, jogadores especificos do time, calendário, contatos da fúria e sobre as partidas, estou aqui para ajudar!');
   }
 });
-
-
 
 async function loadMetrics() {
   const loading = document.getElementById('loading-metrics');
