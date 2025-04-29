@@ -60,12 +60,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (currentPage.includes("unanswered.html")) {
     loadUnanswered();
-  }
-
-  if (currentPage.includes("metrics.html")) {
+  } else if (currentPage.includes("metrics.html")) {
     loadMetrics();
+  } else {
+    
+    appendMessage('FURIOSO', 'Oii, eu sou o FURIOSO, ajudante da FURIA, com o que posso ajudar? pergunte sobre o time, os jogadores, jogadores especificos do time, calendário, contatos da fúria e sobre as partidas, estou aqui para ajudar!');
   }
 });
+
 
 async function loadUnanswered() {
   const loading = document.getElementById('loading-unanswered');
