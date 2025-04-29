@@ -106,7 +106,8 @@ body {
 }
 
 /* Carregando */
-#loading {
+#loading, #loading-metrics,
+#loading-unanswered {
   display:none;
   width: 40px;
   height: 40px;
@@ -261,34 +262,3 @@ button:hover {
   text-transform: uppercase;
 }
 
-#loading-metrics,
-#loading-unanswered {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #1a1a1a;
-  color: #ffffff;
-  font-size: 1.2rem;
-  font-weight: bold;
-  text-align: center;
-  padding: 20px 30px;
-  border-radius: 12px;
-  border: 1px solid #444;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
-  text-transform: uppercase;
-  margin: 40px auto;
-  width: fit-content;
-  animation: pulse 1.5s infinite ease-in-out;
-}
-
-/* Animação */
-@keyframes pulse {
-  0%, 100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.6;
-    transform: scale(1.05);
-  }
-}
