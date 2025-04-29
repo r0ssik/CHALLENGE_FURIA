@@ -10,13 +10,12 @@ from datetime import datetime
 from flask_cors import CORS
 from db_actions import update_question_metrics,  save_unanswered_question #Função própria
 from db import get_connection
-from reset import reset_metrics_if_needed
 
 
 
 
 
-app = Flask(__name__, static_folder='front')
+app = Flask(__name__)
 CORS(app)
 
 # Configurações gerais
