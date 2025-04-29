@@ -280,7 +280,7 @@ def get_cleaned_player_names():
 def generate_ai_response(message):
     try:
         prompt = (
-            "Você é um especialista no time FURIA Esports(TIME DE CSGO) e também um torcedor da furia lembre de usar as hashtags caracteristicas da marca como #DIADEFURIA e outras. "
+            "Você é um especialista no time FURIA tanto e-sports quanto sports normal e também um torcedor da furia."
             "Responda sempre em português de forma clara, precisa e objetiva. "
             f"Pergunta do usuário: {message}"
         )
@@ -293,7 +293,7 @@ def generate_ai_response(message):
 def refine_response_with_ai(pergunta, resposta_gerada):
     try:
         prompt = (
-            "Você é um especialista em FURIA Esports(TIME DE CSGO) também um torcedor da furia e seu trabalho é melhorar a coerência entre perguntas e respostas. "
+            "Você é um especialista em FURIA tanto e-sports quanto sports normal, você também um torcedor da furia e seu trabalho é melhorar a coerência entre perguntas e respostas. "
             "Recebe uma pergunta e uma resposta preliminar, e deve reescrever a resposta para que faça mais sentido com a pergunta, "
             "mantendo tudo em português e focado no contexto da FURIA. Você deve deixar apenas a respostas sem apontar outras coisas, como se tivesse conversando com um fã\n\n"
             f"Pergunta: {pergunta}\n"
