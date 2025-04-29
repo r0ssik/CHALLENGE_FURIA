@@ -80,6 +80,7 @@ def chat():
             return error_response("Requisição inválida. Verifique o formato enviado.", 400)
 
         user_message = normalize_text(data.get('message', ''))
+        original_message = data.get('message', '')
         keywords_presentation = ['oi', 'oii', 'oiii', 'oiiii', 'tudobem', 'tudo bem']
         keywords_team = ['time', 'team', 'furia']
         keywords_players = ['jogador', 'player', 'jogadores', 'players']
@@ -88,28 +89,33 @@ def chat():
         keywords_players_espec = get_cleaned_player_names()
 
         if any(word in user_message for word in keywords_team):
-            return success_response(get_team_info(), "Informações do time enviadas.")
+            resposta = get_team_info()
         elif any(word in user_message for word in keywords_presentation):
-            return success_response('Oii, eu sou o FURIOSO, ajudante da FURIA, com o que posso ajudar? pergunte sobre o time, os jogadores, jogadores especificos do time, calendário, contatos da fúria e sobre as partidas, estou aqui para ajudar!.', "apresentação enviada")
+            resposta = 'Oii, eu sou o FURIOSO, ajudante da FURIA, com o que posso ajudar? pergunte sobre o time, os jogadores, jogadores específicos do time, calendário, contatos da fúria e sobre as partidas, estou aqui para ajudar!.'
         elif any(word in user_message for word in keywords_players_espec):
-            return success_response(get_players_info(user_message), "Informações específicas de jogador enviadas.")
+            resposta = get_players_info(user_message)
         elif any(word in user_message for word in keywords_players):
-            return success_response(get_players_info(user_message), "Lista de jogadores enviada.")
+            resposta = get_players_info(user_message)
         elif any(word in user_message for word in keywords_contacts):
-            return success_response(get_contacts(), "Contatos da FURIA enviados.")
+            resposta = get_contacts()
         elif any(word in user_message for word in keywords_matches):
-            return success_response(get_upcoming_matches(), "Próximos jogos enviados.")
+            resposta = get_upcoming_matches()
         else:
             logging.info(f"Mensagem não entendida: {user_message}")
-            user_input = data.get('message', '')
-            save_unanswered_question(user_input)
-            ia_response = generate_ai_response(user_input)
-            return success_response(ia_response, "Resposta da IA.")
+            save_unanswered_question(original_message)
+            resposta_bruta = generate_ai_response(original_message)
+            resposta = refine_response_with_ai(original_message, resposta_bruta)
+            return success_response(resposta, "Resposta da IA aprimorada.")
 
+        # Se quiser refinar todas as respostas, ative esta linha:
+        resposta = refine_response_with_ai(original_message, resposta)
+
+        return success_response(resposta, "Resposta enviada.")
 
     except Exception as e:
         logging.error(f"Erro no /chat: {e}")
         return error_response("Erro interno no servidor.", 500)
+
 
 @app.route('/unanswered')
 def unanswered():
@@ -299,6 +305,22 @@ def generate_ai_response(message):
     except Exception as e:
         logging.error(f"Erro na Cohere: {e}")
         return "Desculpe, tive um problema para pensar em uma resposta agora."
+
+def refine_response_with_ai(pergunta, resposta_gerada):
+    try:
+        prompt = (
+            "Você é um especialista em FURIA Esports e seu trabalho é melhorar a coerência entre perguntas e respostas. "
+            "Recebe uma pergunta e uma resposta preliminar, e deve reescrever a resposta para que faça mais sentido com a pergunta, "
+            "mantendo tudo em português e focado no contexto da FURIA.\n\n"
+            f"Pergunta: {pergunta}\n"
+            f"Resposta preliminar: {resposta_gerada}\n\n"
+            "Resposta aprimorada:"
+        )
+        response = cohere_client.chat(message=prompt)
+        return response.text.strip()
+    except Exception as e:
+        logging.error(f"Erro ao refinar resposta com Cohere: {e}")
+        return resposta_gerada  # fallback para resposta original
 
 
 
