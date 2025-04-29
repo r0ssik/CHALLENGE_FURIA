@@ -103,6 +103,7 @@ def chat():
         else:
             logging.info(f"Mensagem não entendida: {user_message}")
             save_unanswered_question(original_message)
+            update_question_metrics("IA_HANDLE")
             resposta_bruta = generate_ai_response(original_message)
             resposta = refine_response_with_ai(original_message, resposta_bruta)
             return success_response(resposta, "Resposta da IA aprimorada.")
@@ -116,23 +117,6 @@ def chat():
         logging.error(f"Erro no /chat: {e}")
         return error_response("Erro interno no servidor.", 500)
 
-
-@app.route('/unanswered')
-def unanswered():
-    try:
-        conn = get_connection()
-        cursor = conn.cursor(dictionary=True)
-
-        cursor.execute("SELECT * FROM bot_questions_not_answered ORDER BY id_question DESC")
-        results = cursor.fetchall()
-
-        return jsonify(results), 200
-    except Exception as e:
-        logging.error(f"Erro ao buscar perguntas não respondidas: {e}")
-        return error_response("Erro ao buscar perguntas não respondidas")
-    finally:
-        if cursor: cursor.close()
-        if conn: conn.close()
 
 @app.route('/metrics')
 def metrics():

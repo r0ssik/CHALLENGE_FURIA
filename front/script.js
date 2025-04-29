@@ -69,28 +69,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-async function loadUnanswered() {
-  const loading = document.getElementById('loading-unanswered');
-  const list = document.getElementById('unanswered-list');
-
-  try {
-    loading.style.display = 'block';
-    list.innerHTML = '';
-
-    const response = await fetch('https://challenge-furia.onrender.com/unanswered');
-    const data = await response.json();
-
-    data.forEach(item => {
-      const li = document.createElement('li');
-      li.textContent = item.text;
-      list.appendChild(li);
-    });
-  } catch (error) {
-    console.error('Erro ao carregar perguntas não respondidas', error);
-  } finally {
-    loading.style.display = 'none';
-  }
-}
 
 async function loadMetrics() {
   const loading = document.getElementById('loading-metrics');
