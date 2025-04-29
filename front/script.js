@@ -46,7 +46,7 @@ function appendMessage(sender, text) {
 
   message.innerText = text;
 
-  avatar.src = isUser ? 'user-avatar.png' : 'ige.png'; 
+  avatar.src = isUser ? 'user-avatar.png' : 'image.png'; 
   avatar.className = 'avatar';
 
   container.appendChild(avatar);

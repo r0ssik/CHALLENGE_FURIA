@@ -106,3 +106,5 @@
 2025-04-29 00:35:59,067 - INFO -  * Detected change in 'C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Desktop\\3.programing\\faculdade1\\FACULDADE\\CHALLENGE_FURIA\\main.py', reloading
 2025-04-29 00:35:59,067 - INFO -  * Detected change in 'C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Desktop\\3.programing\\faculdade1\\FACULDADE\\CHALLENGE_FURIA\\main.py', reloading
 2025-04-29 00:35:59,418 - INFO -  * Restarting with watchdog (windowsapi)
+2025-04-29 01:12:06,708 - INFO - 127.0.0.1 - - [29/Apr/2025 01:12:06] "OPTIONS /chat HTTP/1.1" 200 -
+2025-04-29 01:12:07,482 - INFO - 127.0.0.1 - - [29/Apr/2025 01:12:07] "POST /chat HTTP/1.1" 200 -

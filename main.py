@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify, send_from_directory
+from flask import Flask, request, jsonify, redirect
 import requests
 import os
 import logging
@@ -14,7 +14,8 @@ from db import get_connection
 
 
 
-app = Flask(__name__, static_folder='front')
+
+app = Flask(__name__)
 CORS(app)
 
 # Configurações gerais
@@ -59,7 +60,8 @@ def error_response(message="An error occurred", status_code=400):
 
 @app.route('/')
 def home():
-    return send_from_directory(app.static_folder, 'index.html')
+    return redirect('/front/index.html')
+
 
 @app.route('/chat', methods=['POST'])
 def chat():
