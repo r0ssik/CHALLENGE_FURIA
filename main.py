@@ -284,4 +284,4 @@ def get_cleaned_player_names():
         raise
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()

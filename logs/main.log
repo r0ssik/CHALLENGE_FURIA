@@ -102,3 +102,7 @@
 2025-04-29 00:31:42,879 - INFO - 127.0.0.1 - - [29/Apr/2025 00:31:42] "GET /metrics HTTP/1.1" 200 -
 2025-04-29 00:31:43,729 - INFO - 127.0.0.1 - - [29/Apr/2025 00:31:43] "GET /unanswered HTTP/1.1" 200 -
 2025-04-29 00:31:50,514 - INFO - 127.0.0.1 - - [29/Apr/2025 00:31:50] "GET /unanswered HTTP/1.1" 200 -
+2025-04-29 00:35:59,066 - INFO -  * Detected change in 'C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Desktop\\3.programing\\faculdade1\\FACULDADE\\CHALLENGE_FURIA\\main.py', reloading
+2025-04-29 00:35:59,067 - INFO -  * Detected change in 'C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Desktop\\3.programing\\faculdade1\\FACULDADE\\CHALLENGE_FURIA\\main.py', reloading
+2025-04-29 00:35:59,067 - INFO -  * Detected change in 'C:\\Users\\gabri\\OneDrive\\Área de Trabalho\\Desktop\\3.programing\\faculdade1\\FACULDADE\\CHALLENGE_FURIA\\main.py', reloading
+2025-04-29 00:35:59,418 - INFO -  * Restarting with watchdog (windowsapi)
