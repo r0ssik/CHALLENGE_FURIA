@@ -8,7 +8,8 @@ import re
 import json
 from datetime import datetime
 from flask_cors import CORS
-from db_actions import update_question_metrics #Função própria
+from db_actions import update_question_metrics,  save_unanswered_question #Função própria
+from db import get_connection
 
 
 
@@ -81,8 +82,8 @@ def chat():
         keywords_presentation = ['oi', 'oii', 'oiii', 'oiiii', 'tudobem', 'tudo bem']
         keywords_team = ['time', 'team']
         keywords_players = ['jogador', 'player', 'jogadores', 'players']
-        keywords_contacts = ['contato', 'contact', 'redes', 'social', 'rede', 'instagram', 'linkedin', 'X', 'Twitter', 'insta']
-        keywords_matches = ['jogo', 'partida', 'match', 'calendario', 'calendar']
+        keywords_contacts = ['contatar', 'contato', 'contact', 'redes', 'social', 'rede', 'instagram', 'linkedin', 'X', 'Twitter', 'insta']
+        keywords_matches = ['jogo', 'partida', 'match', 'calendario', 'calendar', 'partidas', 'jogos', 'matches']
         keywords_players_espec = get_cleaned_player_names()
 
         if any(word in user_message for word in keywords_team):
@@ -99,11 +100,54 @@ def chat():
             return success_response(get_upcoming_matches(), "Próximos jogos enviados.")
         else:
             logging.info(f"Mensagem não entendida: {user_message}")
+            save_unanswered_question(data.get('message', ''))
             return success_response("Não entendi, pode repetir?", "Mensagem não reconhecida.")
 
     except Exception as e:
         logging.error(f"Erro no /chat: {e}")
         return error_response("Erro interno no servidor.", 500)
+
+@app.route('/unanswered')
+def unanswered():
+    try:
+        conn = get_connection()
+        cursor = conn.cursor(dictionary=True)
+
+        cursor.execute("SELECT * FROM bot_questions_not_answered ORDER BY id_question DESC")
+        results = cursor.fetchall()
+
+        return jsonify(results), 200
+    except Exception as e:
+        logging.error(f"Erro ao buscar perguntas não respondidas: {e}")
+        return error_response("Erro ao buscar perguntas não respondidas")
+    finally:
+        if cursor: cursor.close()
+        if conn: conn.close()
+
+@app.route('/metrics')
+def metrics():
+    try:
+        conn = get_connection()
+        cursor = conn.cursor(dictionary=True)
+
+        cursor.execute("""
+            SELECT name_question, X_DIA, X_MES, X_ANO, X_GERAL 
+            FROM bot_questions
+        """)
+        data = cursor.fetchall()
+
+        
+        return jsonify(data), 200
+
+    except Exception as e:
+        logging.error(f"Erro ao buscar métricas: {e}")
+        return error_response("Erro ao buscar métricas")
+    
+    finally:
+        if cursor: cursor.close()
+        if conn: conn.close()
+
+
 
 def get_team_info():
     try:
@@ -122,6 +166,7 @@ def get_team_info():
     except Exception as e:
         logging.error(f"Erro ao obter informações do time: {e}")
         raise
+
 
 def get_players_info(user_message):
     try:
@@ -146,6 +191,7 @@ def get_players_info(user_message):
         logging.error(f"Erro ao obter informações dos jogadores: {e}")
         raise
 
+
 def get_contacts():
     try:
         update_question_metrics("CONTACTS")
@@ -162,6 +208,7 @@ def get_contacts():
     except Exception as e:
         logging.error(f"Erro ao obter contatos: {e}")
         raise
+
 
 def get_upcoming_matches():
     try:
@@ -188,6 +235,7 @@ def get_upcoming_matches():
         logging.error(f"Erro ao obter próximas partidas: {e}")
         raise
 
+
 def get_last_match():
     try:
         response = requests.get(f"https://api.pandascore.co/csgo/matches?filter[opponent_id]={ID_FURIA}", headers=headers)
@@ -210,11 +258,13 @@ def get_last_match():
         logging.error(f"Erro ao obter última partida: {e}")
         raise
 
+
 def normalize_text(text):
     text = text.lower()
     text = unicodedata.normalize('NFKD', text).encode('ASCII', 'ignore').decode('utf-8')
     text = re.sub(r'[^a-z0-9\\s]', '', text)
     return text
+
 
 def get_cleaned_player_names():
     try:
