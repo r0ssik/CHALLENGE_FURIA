@@ -311,7 +311,7 @@ def refine_response_with_ai(pergunta, resposta_gerada):
         prompt = (
             "Você é um especialista em FURIA Esports e seu trabalho é melhorar a coerência entre perguntas e respostas. "
             "Recebe uma pergunta e uma resposta preliminar, e deve reescrever a resposta para que faça mais sentido com a pergunta, "
-            "mantendo tudo em português e focado no contexto da FURIA.\n\n"
+            "mantendo tudo em português e focado no contexto da FURIA. Você deve deixar apenas a respostas sem apontar outras coisas, como se tivesse conversando com um fã\n\n"
             f"Pergunta: {pergunta}\n"
             f"Resposta preliminar: {resposta_gerada}\n\n"
             "Resposta aprimorada:"
@@ -320,7 +320,7 @@ def refine_response_with_ai(pergunta, resposta_gerada):
         return response.text.strip()
     except Exception as e:
         logging.error(f"Erro ao refinar resposta com Cohere: {e}")
-        return resposta_gerada  # fallback para resposta original
+        return resposta_gerada  
 
 
 
