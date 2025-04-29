@@ -289,11 +289,17 @@ def get_cleaned_player_names():
 
 def generate_ai_response(message):
     try:
-        response = cohere_client.chat(message=message)
+        prompt = (
+            "Você é um especialista no time FURIA Esports. "
+            "Responda sempre em português de forma clara, precisa e objetiva. "
+            f"Pergunta do usuário: {message}"
+        )
+        response = cohere_client.chat(message=prompt)
         return response.text.strip()
     except Exception as e:
         logging.error(f"Erro na Cohere: {e}")
         return "Desculpe, tive um problema para pensar em uma resposta agora."
+
 
 
 if __name__ == '__main__':
