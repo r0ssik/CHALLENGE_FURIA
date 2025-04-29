@@ -1,0 +1,6 @@
+flask
+requests
+python-dotenv
+mysql-connector-python
+flask-cors
+schedule
