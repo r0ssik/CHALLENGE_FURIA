@@ -10,10 +10,9 @@ body {
   margin: 0;
   overflow: hidden;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
+  flex-direction: column; /* importante */
 }
+
 
 /* Logos de fundo */
 .background-logos {
@@ -33,6 +32,8 @@ body {
 
 /* Estrutura principal */
 .main-container {
+  margin-top: 60px; /* altura da navbar */
+  flex: 1; /* ocupa o restante da altura entre navbar e fim da tela */
   position: relative;
   z-index: 1;
   display: flex;
@@ -41,11 +42,12 @@ body {
   width: 100%;
 }
 
+
 .chat-container {
   background-color: rgba(34, 34, 34, 0.9);
   width: 90%;
   max-width: 1000px;
-  height: 85vh;
+  height: 100%;
   border-radius: 12px;
   padding: 20px;
   display: flex;
