@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 import requests
 import os
 import logging
@@ -14,7 +14,7 @@ from db import get_connection
 
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='front')
 CORS(app)
 
 # Configurações gerais
@@ -55,20 +55,11 @@ def error_response(message="An error occurred", status_code=400):
         "data": None
     }), status_code
 
+
+
 @app.route('/')
 def home():
-    return """
-    <h1>Chatbot da FURIA - Bem-vindo! 🔥</h1>
-    <p>Você pode perguntar sobre:</p>
-    <ul>
-      <li>Informações sobre o time</li>
-      <li>Lista dos jogadores atuais</li>
-      <li>Detalhes específicos de um jogador (depois de listar)</li>
-      <li>Próximos jogos e torneios</li>
-      <li>Contatos e redes sociais oficiais</li>
-    </ul>
-    <p>Envie suas mensagens para o endpoint <b>/chat</b> via método POST (Content-Type: application/json).</p>
-    """
+    return send_from_directory(app.static_folder, 'index.html')
 
 @app.route('/chat', methods=['POST'])
 def chat():
