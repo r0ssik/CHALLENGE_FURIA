@@ -17,7 +17,7 @@ if (form) {
     loading.style.display = 'block';
 
     try {
-      const response = await fetch('http://127.0.0.1:5000/chat', {
+      const response = await fetch('https://challenge-furia.onrender.com/chat', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 async function loadUnanswered() {
   try {
-    const response = await fetch('http://127.0.0.1:5000/unanswered');
+    const response = await fetch('https://challenge-furia.onrender.com/unanswered');
     const data = await response.json();
 
     const list = document.getElementById('unanswered-list');
@@ -90,7 +90,7 @@ async function loadUnanswered() {
 
 async function loadMetrics() {
   try {
-    const response = await fetch('http://127.0.0.1:5000/metrics');
+    const response = await fetch('https://challenge-furia.onrender.com/metrics');
     const data = await response.json();
 
     const ctx = document.getElementById('metricsChart').getContext('2d');
