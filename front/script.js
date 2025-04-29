@@ -147,3 +147,26 @@ async function loadMetrics() {
     loading.style.display = 'none';
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const backgroundContainer = document.querySelector('.background-logos');
+
+  if (backgroundContainer) {
+    for (let i = 0; i < 100; i++) {
+      const img = document.createElement('img');
+      img.src = 'image.png';
+
+      let top, left;
+
+      do {
+        top = Math.random() * 95;
+        left = Math.random() * 95;
+      } while (top > 30 && top < 70 && left > 30 && left < 70);
+
+      img.style.top = top + '%';
+      img.style.left = left + '%';
+      img.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.4 + Math.random() * 0.6})`;
+      backgroundContainer.appendChild(img);
+    }
+  }
+});
