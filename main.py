@@ -11,6 +11,7 @@ from flask_cors import CORS
 from db_actions import update_question_metrics,  save_unanswered_question #Função própria
 from db import get_connection
 from reset import reset_metrics_if_needed
+import cohere
 
 
 
@@ -28,6 +29,11 @@ headers = {
     "Accept": "application/json",
     "Authorization": f"Bearer {TOKEN}"
 }
+
+
+cohere_api_key = os.getenv("COHERE_API_KEY")
+cohere_client = cohere.Client(cohere_api_key)
+
 
 # Configuração de logs
 log_folder = 'logs'
@@ -95,8 +101,11 @@ def chat():
             return success_response(get_upcoming_matches(), "Próximos jogos enviados.")
         else:
             logging.info(f"Mensagem não entendida: {user_message}")
-            save_unanswered_question(data.get('message', ''))
-            return success_response("Não entendi, pode repetir?", "Mensagem não reconhecida.")
+            user_input = data.get('message', '')
+            save_unanswered_question(user_input)
+            ia_response = generate_ai_response(user_input)
+            return success_response(ia_response, "Resposta da IA.")
+
 
     except Exception as e:
         logging.error(f"Erro no /chat: {e}")
@@ -277,6 +286,15 @@ def get_cleaned_player_names():
     except Exception as e:
         logging.error(f"Erro ao obter nomes dos jogadores: {e}")
         raise
+
+def generate_ai_response(message):
+    try:
+        response = cohere_client.chat(message=message)
+        return response.text.strip()
+    except Exception as e:
+        logging.error(f"Erro na Cohere: {e}")
+        return "Desculpe, tive um problema para pensar em uma resposta agora."
+
 
 if __name__ == '__main__':
     app.run()
