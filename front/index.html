@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chatbot FURIA</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="background-logos"></div> <!-- AQUI: fundo separado -->
+
+  <div class="main-container">
+    <div class="chat-container">
+      <div class="chat-content">
+        <div id="chat"></div>
+        <div id="loading">Carregando...</div>
+        <form id="chat-form">
+          <input type="text" id="message-input" placeholder="Digite sua mensagem...">
+          <button type="submit">Enviar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <script>
+    const background = document.querySelector('.background-logos');
+  
+    for (let i = 0; i < 100; i++) {
+      const img = document.createElement('img');
+      img.src = 'image.png';
+  
+      let top, left;
+  
+      
+      do {
+        top = Math.random() * 95;
+        left = Math.random() * 95;
+      } while (top > 30 && top < 70 && left > 30 && left < 70);
+  
+      img.style.top = top + '%';
+      img.style.left = left + '%';
+      img.style.transform = `rotate(${Math.random() * 360}deg) scale(${0.4 + Math.random() * 0.6})`;
+      background.appendChild(img);
+    }
+  </script>
+  
+  
+</body>
+</html>
