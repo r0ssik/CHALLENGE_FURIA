@@ -73,7 +73,7 @@ def chat():
 
         user_message = normalize_text(data.get('message', ''))
         keywords_presentation = ['oi', 'oii', 'oiii', 'oiiii', 'tudobem', 'tudo bem']
-        keywords_team = ['time', 'team']
+        keywords_team = ['time', 'team', 'furia']
         keywords_players = ['jogador', 'player', 'jogadores', 'players']
         keywords_contacts = ['contatar', 'contato', 'contact', 'redes', 'social', 'rede', 'instagram', 'linkedin', 'X', 'Twitter', 'insta']
         keywords_matches = ['jogo', 'partida', 'match', 'calendario', 'calendar', 'partidas', 'jogos', 'matches']
