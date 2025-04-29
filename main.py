@@ -61,7 +61,6 @@ def error_response(message="An error occurred", status_code=400):
 
 @app.route('/')
 def home():
-    reset_metrics_if_needed()
     return redirect('/front/index.html')
 
 
