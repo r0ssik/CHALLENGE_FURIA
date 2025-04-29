@@ -15,7 +15,7 @@ from db import get_connection
 
 
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='front')
 CORS(app)
 
 # Configurações gerais
