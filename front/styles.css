@@ -8,14 +8,17 @@ body {
   color: #eee;
   height: 100vh;
   margin: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: hidden;
   display: flex;
   flex-direction: column; /* importante */
 }
 
-
-/* Logos de fundo */
+@media (max-width: 768px) {
+  body {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
 .background-logos {
   position: absolute;
   width: 100%;
