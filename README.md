@@ -73,7 +73,7 @@ DB_USER=root
 
 7. **Altere o JS:**
 
-- Para executar localmente, peço que troque a linha 19 e 81 do código (front/script.js) para se conectar com o back localhost e não com o do onrender. Caso queira usar a do onrender não tem problema, mas acredito que seu ip pode ser bloqueado. 
+- Para executar localmente, peço que troque a linha 19 e 81 do código (front/script.js) para se conectar com o back localhost e não com o do onrender. Caso queira usar a do onrender não tem problema, mas acredito que seu ip pode ser bloqueado. (Eu não troco pois a versão do git é a que fica online no onrender)
 
 ```bash
 TROQUE const response = await fetch('https://challenge-furia.onrender.com/chat',  POR  const response = await fetch('http://localhost:5000/chat',
