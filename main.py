@@ -208,7 +208,10 @@ def get_contacts():
 def get_upcoming_matches():
     try:
         update_question_metrics("MATCHES")
-        response = requests.get(f"https://api.pandascore.co/csgo/matches/upcoming?filter[opponent_id]={ID_FURIA}", headers=headers)
+        response = requests.get(
+            f"https://api.pandascore.co/csgo/matches/upcoming?filter[opponent_id]={ID_FURIA}",
+            headers=headers
+        )
         response.raise_for_status()
         response_json = response.json()
 
@@ -218,9 +221,15 @@ def get_upcoming_matches():
 
         mensagens = []
         for partida in response_json:
-            time1 = partida['opponents'][0]['opponent']['name']
-            time2 = partida['opponents'][1]['opponent']['name']
-            data = partida['begin_at']
+            opponents = partida.get("opponents", [])
+            if len(opponents) < 2:
+                time1 = opponents[0]["opponent"]["name"] if opponents else "TBD"
+                time2 = "TBD"
+            else:
+                time1 = opponents[0]["opponent"]["name"]
+                time2 = opponents[1]["opponent"]["name"]
+
+            data = partida.get("begin_at", "Data não disponível")
             mensagens.append(f"Partida: {time1} vs {time2} em {data}")
 
         logging.info("Próximas partidas obtidas com sucesso.")
@@ -229,6 +238,7 @@ def get_upcoming_matches():
     except Exception as e:
         logging.error(f"Erro ao obter próximas partidas: {e}")
         raise
+
 
 
 def get_last_match():
