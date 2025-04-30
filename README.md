@@ -165,7 +165,7 @@ O sistema segue um fluxo simples porém robusto:
 - [ ] Adicionar testes unitários e de integração.
 - [ ] Aumentar a capacidade do bot em geral.
 - [ ] Melhorar o sistema de métricas de perguntas mais feitas.
-- [ ] Melhorar o sistema de captação de perguntas que geraram I.A - HANDLE(Encontrar maiores padrões e automatizar).
+- [ ] Melhorar o sistema de captação de perguntas que geraram I.A - HANDLE(Encontrar melhor os padrões).
 
 ---
 
