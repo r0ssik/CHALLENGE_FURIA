@@ -133,7 +133,7 @@ python main.py
 
 ---
 
-## 📱 Design Responsivo
+## 📱 Design
 
 - **Desktop**: altura fixa, sem rolagem do body (`overflow: hidden`)
 - **Mobile**: altura flexível com `overflow: auto` e rolagem ativada
