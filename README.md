@@ -16,6 +16,7 @@ CHALLENGE_FURIA/
 │   └── script.js                # Conexão com o back-end, funções visuais e outros
 ├── logs/
 │   └── main.logs                # Armazena os logs da main para entender melhor como o código está funcionando.
+│    
 ├── main.py                      # Código principal Flask do backend
 ├── db_actions.py                # Funções auxiliares para realizar operações comuns no banco de dados.
 ├── db.py                        # Controlar as conexões do banco de dados -> MAXIMO 10 SIMULTANEAS
