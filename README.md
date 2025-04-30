@@ -111,6 +111,8 @@ O sistema segue um fluxo simples porém robusto:
 4. **Retorno e Exibição**: A resposta é enviada de volta ao navegador e exibida no chat.
 5. **Tipo de Pergunta**: O tipo de pergunta é salvo no banco de dados, e essas métricas são mostradas na pagina de métricas.
 6. **IA-HANDLES**: As perguntas sem resposta prévia é guardada como I.A - HANDLE e salva no bd(bot_questions_not_answered) para análise de implementações futuras(uma tela de visualização dessas perguntas foi desenvolvida, porém descartada ao longo do processo das ideas).
+7. **Métricas**: Sempre que a main é acessada, as métricas são verificadas com base no last-update, optei por essa abordagem pois hospedei no servidor onrender, e no plano gratuido eu não tinha acesso a cronjob, nem a banco de dados, por isto o banco de dados é da hostinger.
+   
 
 ---
 ## ✨ Frontend
