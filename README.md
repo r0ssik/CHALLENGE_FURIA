@@ -140,14 +140,6 @@ O sistema segue um fluxo simples porém robusto:
 
 ---
 
-## 📂 Arquivos Importantes
-
-- `main.py`: lógica principal do chatbot
-- `styles.css`: controle visual, responsividade e personalização
-- `index.html`: interface HTML com barra de navegação, área de chat e input
-
----
-
 ## 📱 Design
 
 - **Desktop**: altura fixa, sem rolagem do body (`overflow: hidden`)
