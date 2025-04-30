@@ -72,11 +72,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 async function loadMetrics() {
-  const loading = document.getElementById('loading-metrics');
+  const loadingWrapper = document.getElementById('loading-wrapper-metrics');
   const ctx = document.getElementById('metricsChart').getContext('2d');
 
   try {
-    loading.style.display = 'block';
+    loadingWrapper.style.display = 'flex'; // Exibe o spinner centralizado
 
     const response = await fetch('https://challenge-furia.onrender.com/metrics');
     const data = await response.json();
@@ -125,7 +125,7 @@ async function loadMetrics() {
   } catch (error) {
     console.error('Erro ao carregar métricas', error);
   } finally {
-    loading.style.display = 'none';
+    loadingWrapper.style.display = 'none'; // Esconde o spinner após o carregamento
   }
 }
 

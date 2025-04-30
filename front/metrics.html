@@ -7,27 +7,40 @@
   <title>Métricas - FURIOSO BOT</title>
   <link rel="stylesheet" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    #loading-wrapper-metrics {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: calc(100vh - 100px);
+      margin-top: 60px;
+    }
+
+    #metricsChart {
+      margin-top: 60px;
+    }
+  </style>
 </head>
 <body>
 
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="nav-link">Chatbot</a>
+      <a href="metrics.html" class="nav-link-active">Métricas</a>
+    </div>
+  </nav>
+  
+  <div class="background-logos"></div>
 
-    <nav class="navbar">
-        <div class="navbar-container">
-          <a href="index.html" class="nav-link">Chatbot</a>
-          <a href="metrics.html" class="nav-link-active">Métricas</a>
-        </div>
-      </nav>
-      
-      <div class="background-logos"></div>
-
-      
+  <!-- Wrapper do loading centralizado -->
+  <div id="loading-wrapper-metrics">
+    <div id="loading-metrics"></div>
+  </div>
 
   <div style="width: 80%; margin: 0 auto;">
-    <div id="loading-metrics"></div>
     <canvas id="metricsChart" width="400" height="200"></canvas>
   </div>
 
   <script src="script.js"></script>
-  
 </body>
 </html>
