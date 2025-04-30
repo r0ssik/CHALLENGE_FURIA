@@ -86,8 +86,8 @@ python main.py
 ```
 
 9. **Abra o projeto:**
+- Abra o projeto no localhost ou diretamente no (front/index.html) e explore as funcionalidades.
 
-Abra o projeto no localhost ou diretamente no (front/index.html) e explore as funcionalidades.
 ---
 
 ## 💡 Funcionalidades
