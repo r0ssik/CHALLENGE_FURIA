@@ -100,6 +100,18 @@ python main.py
 
 ---
 
+## ⚙️ Como Funciona a Ferramenta
+
+O sistema segue um fluxo simples porém robusto:
+
+1. **Interface Web (Frontend)**: O usuário interage com o chatbot por meio de uma interface HTML/CSS.
+2. **Processamento da Pergunta (Backend)**: A pergunta é enviada ao servidor Flask, que identifica se ela é respondível diretamente pela API da PandaScore ou requer compreensão mais profunda.
+3. **Uso de NLP com Cohere**: Se a pergunta for mais aberta ou contextual, é usada a API da Cohere para interpretar e gerar uma resposta adequada. Caso já aja uma resposta pre-definida pelo bot, o cohere pega esta resposta e deixa mais coerente com a pergunta em si.
+4. **Retorno e Exibição**: A resposta é enviada de volta ao navegador e exibida no chat.
+5. **Tipo de Pergunta**: O tipo de pergunta é salvo no banco de dados, e essas métricas são mostradas na pagina de métricas.
+6. **IA-HANDLES**: As perguntas sem resposta prévia é guardada como I.A - HANDLE e salva no bd(bot_questions_not_answered) para análise de implementações futuras(uma tela de visualização dessas perguntas foi desenvolvida, porém descartada ao longo do processo das ideas).
+
+---
 ## ✨ Frontend
 
 - HTML + CSS customizado com responsividade

@@ -18,6 +18,12 @@ def criar_tabelas():
             `name_question` VARCHAR(50) NOT NULL,
             `data` DATE NOT NULL
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+        """,
+        """
+        CREATE TABLE IF NOT EXISTS `bot_questions_not_answered` (
+            `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+            `question` TEXT NOT NULL
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
         """
     ]
 

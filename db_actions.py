@@ -42,7 +42,6 @@ def update_question_metrics(name_question):
         if conn:
             conn.close()
 
-
 def save_unanswered_question(message):
     conn = None
     cursor = None
@@ -50,18 +49,21 @@ def save_unanswered_question(message):
         conn = get_connection()
         cursor = conn.cursor()
 
-        check_query = "SELECT 1 FROM bot_questions_not_answered WHERE text = %s"
+        
+        check_query = "SELECT 1 FROM bot_questions_not_answered WHERE question = %s"
         cursor.execute(check_query, (message,))
         exists = cursor.fetchone()
 
         if not exists:
-            insert_query = "INSERT INTO bot_questions_not_answered (text) VALUES (%s)"
+            insert_query = "INSERT INTO bot_questions_not_answered (question) VALUES (%s)"
             cursor.execute(insert_query, (message,))
-            conn.commit()
+
+        conn.commit()
     except Exception as e:
-        print(f"Erro ao salvar pergunta não compreendida: {e}")
+        print(f"Erro ao salvar pergunta: {e}")
     finally:
         if cursor:
             cursor.close()
         if conn:
             conn.close()
+
