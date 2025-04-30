@@ -1,5 +1,5 @@
 
-# 🤖 Chatbot FURIOSO — FURIA Esports (CS:GO) - https://challenge-furia.onrender.com
+# 🤖 Chatbot FURIOSO — FURIA Esports (CS:GO)
 
 Este é um chatbot interativo criado com Flask para fornecer informações sobre o time profissional de CS:GO **FURIA Esports**. O chatbot responde perguntas sobre jogadores, lineup, calendário de partidas, história da furia, e muito mais, com base em dados da API da [PandaScore](https://developers.pandascore.co/) e utilizando NLP via [Cohere](https://docs.cohere.com/).
 - Esta aplicação está online. Acesse(https://challenge-furia.onrender.com)
@@ -58,11 +58,12 @@ pip install -r requirements.txt
 6. **Configure as variáveis de ambiente:**
 
 Crie um arquivo `.env` com as chaves da API e conexão com o seu banco de dados:
+(Para conseguir as chaves de API acesse [PandaScore](https://developers.pandascore.co/) e [Cohere](https://docs.cohere.com/).)
 
 ```
-token_princ=
+token_princ=            #[PandaScore](https://developers.pandascore.co/)
 ID_FURIA=124530
-COHERE_API_KEY=
+COHERE_API_KEY=         #[Cohere](https://docs.cohere.com/
 
 DB_NAME=banco_que_você criou
 DB_HOST=localhost
@@ -110,6 +111,8 @@ O sistema segue um fluxo simples porém robusto:
 4. **Retorno e Exibição**: A resposta é enviada de volta ao navegador e exibida no chat.
 5. **Tipo de Pergunta**: O tipo de pergunta é salvo no banco de dados, e essas métricas são mostradas na pagina de métricas.
 6. **IA-HANDLES**: As perguntas sem resposta prévia é guardada como I.A - HANDLE e salva no bd(bot_questions_not_answered) para análise de implementações futuras(uma tela de visualização dessas perguntas foi desenvolvida, porém descartada ao longo do processo das ideas).
+7. **Métricas**: Sempre que a main é acessada, as métricas são verificadas com base no last-update, optei por essa abordagem pois hospedei no servidor onrender, e no plano gratuido eu não tinha acesso a cronjob, nem a banco de dados, por isto o banco de dados é da hostinger.
+   
 
 ---
 ## ✨ Frontend
@@ -165,10 +168,12 @@ O sistema segue um fluxo simples porém robusto:
 
 ## ✅ Próximos Passos (To-Do)
 
-- [ ] Implementar feedback de usuário para respostas ruins
-- [ ] Suporte a múltiplos jogos (Valorant, Kinges League, etc.)
-- [ ] Adicionar testes unitários e de integração
-- [ ] Aumentar a capacidade do bot em geral
+- [ ] Implementar feedback de usuário para respostas ruins.
+- [ ] Suporte a múltiplos jogos (Valorant, Kinges League, etc.).
+- [ ] Adicionar testes unitários e de integração.
+- [ ] Aumentar a capacidade do bot em geral.
+- [ ] Melhorar o sistema de métricas de perguntas mais feitas.
+- [ ] Melhorar o sistema de captação de perguntas que geraram I.A - HANDLE(Encontrar maiores padrões e automatizar).
 
 ---
 
