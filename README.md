@@ -180,3 +180,4 @@ O sistema segue um fluxo simples porém robusto:
 ## 📄 Licença
 
 - Este projeto foi feito para um processo seletivo da FURIA ESPORTS em Estágio em Engenharia de Software ou Assistente em Desenvolvimento de Software. Este projeto será usado apenas com o propósito de avalição do candidato e nada mais.
+- Este projeto é de autoria do dono deste repositória, Gabriel Rodrigues Rossik, e demorou cerca de 11 horas para o desenvolvimento, até agora.
