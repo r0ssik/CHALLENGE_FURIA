@@ -1,5 +1,5 @@
 
-# 🤖 Chatbot FURIOSO — FURIA Esports (CS:GO) - https://challenge-furia.onrender.com
+# 🤖 Chatbot FURIOSO — FURIA Esports (CS:GO)
 
 Este é um chatbot interativo criado com Flask para fornecer informações sobre o time profissional de CS:GO **FURIA Esports**. O chatbot responde perguntas sobre jogadores, lineup, calendário de partidas, história da furia, e muito mais, com base em dados da API da [PandaScore](https://developers.pandascore.co/) e utilizando NLP via [Cohere](https://docs.cohere.com/).
 - Esta aplicação está online. Acesse(https://challenge-furia.onrender.com)
