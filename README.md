@@ -166,10 +166,12 @@ O sistema segue um fluxo simples porém robusto:
 
 ## ✅ Próximos Passos (To-Do)
 
-- [ ] Implementar feedback de usuário para respostas ruins
-- [ ] Suporte a múltiplos jogos (Valorant, Kinges League, etc.)
-- [ ] Adicionar testes unitários e de integração
-- [ ] Aumentar a capacidade do bot em geral
+- [ ] Implementar feedback de usuário para respostas ruins.
+- [ ] Suporte a múltiplos jogos (Valorant, Kinges League, etc.).
+- [ ] Adicionar testes unitários e de integração.
+- [ ] Aumentar a capacidade do bot em geral.
+- [ ] Melhorar o sistema de métricas de perguntas mais feitas.
+- [ ] Melhorar o sistema de captação de perguntas que geraram I.A - HANDLE(Encontrar maiores padrões e automatizar).
 
 ---
 
