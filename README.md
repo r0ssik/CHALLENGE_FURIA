@@ -58,11 +58,12 @@ pip install -r requirements.txt
 6. **Configure as variáveis de ambiente:**
 
 Crie um arquivo `.env` com as chaves da API e conexão com o seu banco de dados:
+(Para conseguir as chaves de API acesse [PandaScore](https://developers.pandascore.co/) e [Cohere](https://docs.cohere.com/).)
 
 ```
-token_princ=
+token_princ=            #[PandaScore](https://developers.pandascore.co/)
 ID_FURIA=124530
-COHERE_API_KEY=
+COHERE_API_KEY=         #[Cohere](https://docs.cohere.com/
 
 DB_NAME=banco_que_você criou
 DB_HOST=localhost
