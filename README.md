@@ -31,7 +31,7 @@ CHALLENGE_FURIA/
 
 ---
 
-## 🚀 Como Executar (LOCALMENTE)
+## 🚀 Como Executar (LOCALMENTE) -- Garanta que você tenha python instalado.
 
 1. **Clone o repositório:**
 
