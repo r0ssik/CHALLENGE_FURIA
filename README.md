@@ -110,7 +110,7 @@ O sistema segue um fluxo simples porém robusto:
 3. **Uso de NLP com Cohere**: Se a pergunta for mais aberta ou contextual, é usada a API da Cohere para interpretar e gerar uma resposta adequada. Caso já aja uma resposta pre-definida pelo bot, o cohere pega esta resposta e deixa mais coerente com a pergunta em si.
 4. **Retorno e Exibição**: A resposta é enviada de volta ao navegador e exibida no chat.
 5. **Tipo de Pergunta**: O tipo de pergunta é salvo no banco de dados, e essas métricas são mostradas na pagina de métricas.
-6. **IA-HANDLES**: As perguntas sem resposta prévia é guardada como I.A - HANDLE e salva no bd(bot_questions_not_answered) para análise de implementações futuras(uma tela de visualização dessas perguntas foi desenvolvida, porém descartada ao longo do processo das ideas).
+6. **IA-HANDLES**: As perguntas sem resposta prévia é guardada como I.A - HANDLE e salva no bd(bot_questions_not_answered) para análise de implementações futuras(uma tela de visualização dessas perguntas foi desenvolvida, porém descartada ao longo do processo das ideas de MVP -> No futuro as implementações de BD abrem um leque para melhor entendimento do fã, batendo também um pouco com o challenge #2 do processo seletivo da FURIA).
 7. **Métricas**: Sempre que a main é acessada, as métricas são verificadas com base no last-update, optei por essa abordagem pois hospedei no servidor onrender, e no plano gratuido eu não tinha acesso a cronjob, nem a banco de dados, por isto o banco de dados é da hostinger.
    
 
