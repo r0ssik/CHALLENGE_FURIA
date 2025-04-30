@@ -44,7 +44,7 @@ cd CHALLENGE_FURIA
 
 ```bash
 python -m venv venv
-source venv/bin/activate ou venv\Scripts\activate no Windows
+source venv/bin/activate #ou venv\Scripts\activate no Windows
 ```
 
 3. **Instale as dependências:**
