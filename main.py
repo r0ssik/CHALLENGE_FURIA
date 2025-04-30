@@ -12,6 +12,7 @@ from db_actions import update_question_metrics,  save_unanswered_question #Funç
 from db import get_connection
 from reset import reset_metrics_if_needed
 import cohere
+from create_if_not_exists import criar_tabelas
 
 
 
@@ -309,4 +310,5 @@ def refine_response_with_ai(pergunta, resposta_gerada):
 
 
 if __name__ == '__main__':
+    criar_tabelas()
     app.run()
