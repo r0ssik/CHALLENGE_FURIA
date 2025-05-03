@@ -97,7 +97,7 @@ python main.py
 - 📅 **Calendário e partidas** usando a API do PandaScore
 - 🧠 **Respostas com IA** via Cohere para perguntas abertas
 - 📝 **Registro de perguntas não respondidas** para análise posterior
-- 📱 **Responsivo para desktop e mobile**
+- 📱 **desktop e mobile**
 
 ---
 
