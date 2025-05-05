@@ -31,7 +31,7 @@ CHALLENGE_FURIA/
 
 ---
 
-## 🚀 Como Executar (LOCALMENTE) -- Garanta que você tenha python instalado.
+##  Como Executar (LOCALMENTE) -- Garanta que você tenha python instalado.
 
 1. **Clone o repositório:**
 
@@ -133,7 +133,7 @@ O sistema segue um fluxo simples porém robusto:
 
 ---
 
-## 🧪 Exemplos de Uso
+##  Exemplos de Uso
 
 > **Usuário**: Quem são os jogadores da FURIA?  
 > **Bot**: O lineup principal conta com FalleN, KSCERATO...
